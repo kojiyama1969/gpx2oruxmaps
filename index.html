@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>RWGPS to OruxMaps</title>
+    <style type="text/css">
+      #drop_zone {
+
+	  width: 100%;
+	  height: 64px;
+	  background-color: aliceblue;
+	  text-align: center;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <input type="file" id="files" name="files[]" />
+    <output id="list"></output>
+    <div id="drop_zone">Please drop gpx file here</div>
+    <ul id="download_item"></ul>
+    <script src="convertgpx.js"></script>
+  </body>
+</html>
