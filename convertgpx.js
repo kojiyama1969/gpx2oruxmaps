@@ -47,10 +47,10 @@ function convertgpx(event) {
 		"Right": 0,
 		"Slight Left": 0,
 		"Slight Right": 0,
-		"Sharp Left": 0,
-		"Sharp Right": 0,
+		"Sharp Left": 20,
+		"Sharp Right": 20,
 		"Straight": 0,
-		"Uturn": 0,
+		"Uturn": 20,
 		"Summit": 15,
 		"Valley": 18,
 		"Water": 10,
@@ -58,14 +58,55 @@ function convertgpx(event) {
 		"Danger": 19,
 		"First Aid": 11,
 		"Control": 14,
-		"Climb": 2,
+		"Climb": 21,
 		"4th Category": 6,
 		"3rd Category": 5,
 		"2nd Category": 4,
 		"1st Category": 3,
 		"Hors Category": 2,
 		"Sprint": 1,
-		"Generic": 16
+		"Generic": 16,
+
+		"SHARP CURVE": 20,
+		"STEEP INCLINE": 21,
+		"CROSSING": 22,
+		"OBSTACLE": 19,
+		"DANGER": 19,
+		"ALERT": 19,
+		"STORE": 13,
+		"OVERLOOK": 16,
+		"VALLEY": 18,
+		"BRIDGE": 0,
+		"TUNNEL": 17,
+		"SUMMIT": 15,
+		"REST AREA": 0,
+		"SHELTER": 0,
+		"CAMPSITE": 8,
+		"MEETING SPOT": 14,
+		"TRANSITION": 0,
+		"TRANSPORT": 0,
+		"NAVAID": 0,
+		"GEAR": 12,
+		"SHOWER": 0,
+		"TOILET": 9,
+		"FOURTH CATEGORY": 6,
+		"THIRD CATEGORY": 5,
+		"SECOND CATEGORY": 4,
+		"FIRST CATEGORY": 3,
+		"HORS CATEGORY": 2,
+		"SPRINT": 1,
+		"SPORTS DRINK": 10,
+		"ENERGY GEL": 10,
+		"WATER": 10,
+		"FOOD": 7,
+		"FIRST AID": 11,
+		"AID STATION": 11,
+		"SERVICE": 14,
+		"INFO": 14,
+		"MILE MARKER": 0,
+		"GENERAL DISTANCE": 0,
+		"GENERIC": 0,
+		"CHECKPOINT": 14
 	 };
 	var items = document.getElementById("download_item");
 	var li = document.createElement("li");
@@ -107,18 +148,33 @@ function convertgpx(event) {
 				var pointType = 0;
 				var cmtElements = e.getElementsByTagName('cmt');
 				var nameElements = e.getElementsByTagName('name');
+				var symElements = e.getElementsByTagName('sym');
+				var typeElements = e.getElementsByTagName('type');
 				var lon = e.getAttribute('lon');
 				var lat = e.getAttribute('lat');
-				if(cmtElements.length > 0){
-					descr = cmtElements[0].textContent;
-					if(nameElements.length > 0){
-						if(nameElements[0].textContent in typeTable){
-							pointType = typeTable[nameElements[0].textContent];
+				if(symElements.length > 0 && symElements[0].textContent === 'Dot'){
+					// if there is sym tag and text is Dot, this gpx is made by ride with gps.
+					if(cmtElements.length > 0){
+						descr = cmtElements[0].textContent;
+						if(nameElements.length > 0){
+							if(nameElements[0].textContent in typeTable){
+								pointType = typeTable[nameElements[0].textContent];
+							}
+						}
+					}else{
+						if(nameElements.length > 0){
+							descr = nameElements[0].textContent;
 						}
 					}
 				}else{
+					// this is for garmin connect
 					if(nameElements.length > 0){
 						descr = nameElements[0].textContent;
+					}
+					if(typeElements.length > 0){
+						if(typeElements[0].textContent in typeTable){
+							pointType = typeTable[typeElements[0].textContent];
+						}
 					}
 				}
 				var pointElement = newDoc.createElement('Point');
