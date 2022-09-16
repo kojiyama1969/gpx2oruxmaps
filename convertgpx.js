@@ -1,9 +1,9 @@
 
       function convertgpx(event){
 	  // this is for 8.5.5
-	  // var typeTable = { "Left":"左", "Right":"右", "Slight Left":"やや左", "Slight Right":"やや右", "Sharp Left":"左に急カーブ", "Sharp Right":"右に急カーブ", "Straight":"そのまま進行", "Uturn":"リターン", "Summit":"頂上", "Water":"水飲み場", "Food":"レストラン", "Danger":"危険地帯", "First Aid":"救急車", "Control":"情報案内", "Generic":"ポイント", "Sprint":"写真"};
+	  var typeTable = { "Left":"左", "Right":"右", "Slight Left":"やや左", "Slight Right":"やや右", "Sharp Left":"左に急カーブ", "Sharp Right":"右に急カーブ", "Straight":"そのまま進行", "Uturn":"リターン", "Summit":"頂上", "Water":"水飲み場", "Food":"レストラン", "Danger":"危険地帯", "First Aid":"救急車", "Control":"情報案内", "Generic":"ポイント", "Sprint":"写真"};
 	  // this is for 7.x
-	  var typeTable = { "Left":"左", "Right":"右", "Slight Left":"Slight Left", "Slight Right":"Slight Right", "Sharp Left":"Turn Sharp Left", "Sharp Right":"Turn Sharp Right", "Straight":"そのまま進行", "Uturn":"リターン", "Summit":"頂上", "Water":"水飲み場", "Food":"レストラン", "Danger":"危険地帯", "First Aid":"Ambulance", "Control":"情報案内", "Generic":"ポイント", "Sprint":"写真"};
+	  // var typeTable = { "Left":"左", "Right":"右", "Slight Left":"Slight Left", "Slight Right":"Slight Right", "Sharp Left":"Turn Sharp Left", "Sharp Right":"Turn Sharp Right", "Straight":"そのまま進行", "Uturn":"リターン", "Summit":"頂上", "Water":"水飲み場", "Food":"レストラン", "Danger":"危険地帯", "First Aid":"Ambulance", "Control":"情報案内", "Generic":"ポイント", "Sprint":"写真"};
 	  var items = document.getElementById("download_item");
 	  var li = document.createElement("li");
 	  var serializer = new XMLSerializer();
