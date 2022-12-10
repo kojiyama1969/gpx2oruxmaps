@@ -14,35 +14,35 @@
 	  if(e != null && e.tagName == "gpx"){
 	      var elements = doc.getElementsByTagName("wpt");
 	      for(var e of elements){
-		  var descs = e.getElementsByTagName("desc");
-		  if(descs.length > 0){
 		      var names = e.getElementsByTagName("name");
 		      if(names.length > 0){
-			  var sym = doc.createElementNS(e.namespaceURI, "sym");
-			  sym.textContent = "Waypoint";
-			  var type = doc.createElementNS(e.namespaceURI, "type");
-			  if(names[0].textContent in typeTable){
-			      type.textContent = typeTable[names[0].textContent];
-			  }else{
-			      type.textContent = "Dot";
-			  }
-			  var newName = doc.createElementNS(e.namespaceURI, "name");
-			  newName.textContent = descs[0].textContent;
-			  e.replaceChild(newName,names[0]);
+			  	var sym = doc.createElementNS(e.namespaceURI, "sym");
+			  	sym.textContent = "Waypoint";
+			  	var type = doc.createElementNS(e.namespaceURI, "type");
+			  	if(names[0].textContent in typeTable){
+			    	type.textContent = typeTable[names[0].textContent];
+			  	}else{
+			    	type.textContent = "Dot";
+			  	}
+			  	var newName = doc.createElementNS(e.namespaceURI, "name");
+			  	newName.textContent = "";
+			  	var descs = e.getElementsByTagName("desc");
+			  	if(descs.length > 0){
+					newName.textContent = descs[0].textContent;
+			  	}
+			  	e.replaceChild(newName,names[0]);
 
-			  var oldSym = e.getElementsByTagName("sym");
-			  if(oldSym.length > 0){
-			      e.replaceChild(sym,oldSym[0]);
+			  	var oldSym = e.getElementsByTagName("sym");
+			  	if(oldSym.length > 0){
+			    	e.replaceChild(sym,oldSym[0]);
+			  	}
+			  	var oldType = e.getElementsByTagName("type");
+			  	if(oldType.length > 0){
+			    	e.replaceChild(type,oldType[0]);
+			  	}
 			  }
-			  var oldType = e.getElementsByTagName("type");
-			  if(oldType.length > 0){
-			      e.replaceChild(type,oldType[0]);
-			  }
-
 			  modifyFlag = true;
-		      }
-		  }			  
-	      }
+		  }
 	      if(modifyFlag){
 		  var img = document.createElement("img");
 		  img.src = "img/GPX_icon-vector.svg";
