@@ -35,10 +35,10 @@ table tr:nth-child(odd){
   
   <body>
     <h1>RideWithGPS to Oruxmap</h1>
-    <p>Ride With GPSが生成したキューシート付きGPXファイルをOruxmapsで適切にナビゲートさせるための変換サイトです。</p>
+    <p><a href="https://ridewithgps.com">Ride With GPS</a>が生成したキューシート付きGPXファイルをAndroid用オフラインマップアプリ（有料）である<a href="https://play.google.com/store/apps/details/OruxMaps_GP?id=com.orux.oruxmapsDonate&hl=ja">Oruxmaps GP</a>で適切にナビゲートさせるための変換サイトです。</p>
     <input type="file" id="files" name="files[]" />
     <output id="list"></output>
-    <div id="drop_zone">Please drop gpx file here</div>
+    <div id="drop_zone" style="display: flex; justify-content: center; align-items: center;">Please drop gpx file here</div>
     <ul id="download_item"></ul>
     <script src="convertgpx.js"></script>
     <h2>使い方</h2>
