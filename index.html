@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RWGPS to OruxMaps</title>
     <style type="text/css">
       #drop_zone {
@@ -12,22 +12,77 @@
 	  background-color: aliceblue;
 	  text-align: center;
       }
+
+ table{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table th,table td{
+  padding: 5px 10px;
+  text-align: center;
+  border: solid 1px;
+}
+
+table th {
+  background-color: aliceblue
+}
+table tr:nth-child(odd){
+  background-color: whitesmoke
+}
     </style>
   </head>
   
   <body>
     <h1>RideWithGPS to Oruxmap</h1>
-    <p>Ride WITH GPSが生成したキューシート付きGPXファイルをOruxmapで適切にナビゲートさせるための変換サイトです。</p>
+    <p>Ride With GPSが生成したキューシート付きGPXファイルをOruxmapsで適切にナビゲートさせるための変換サイトです。</p>
     <input type="file" id="files" name="files[]" />
     <output id="list"></output>
     <div id="drop_zone">Please drop gpx file here</div>
     <ul id="download_item"></ul>
     <script src="convertgpx.js"></script>
     <h2>使い方</h2>
-    <p>Ride WITH GPSのGPX Export時に「経路マーカーとしてPOIを含める」と「経路マーカーとしてキューを含める」を有効にして保存してください。このファイルを以下のファイル選択機能、またはドロップエリアにドラッグアンドドロップすると変換ファイルのダウンロードリンクが生成されます。これをクリックして改めてダウンロードし、これをOruxmapの経路ファイルとして読み込んでください。</p>
-    <h2>言語について</h2>
-    <p>返還後のキューシート情報を日本語で設定するため、Oruxmapsの日本語以外の設定では正常に動作しないと思われます（未確認）。</p>
-    <h2>変換について</h2>
+    <h3>キューシート</h3>
+    <p>Ride With GPSのキュー情報（目印）では「種類」として適切な方向指示やCP情報を入力します。「注記」の情報はOruxmapsの「説明」に変換します。Oruxmapsで「説明」を発話する設定にすれば方向指示情報とともにしゃべります。</p>
+    <img src="img/point_in_rwgps.png" width="237" height="423" alt="Ride With GPSのキュー情報"/>
+    <h3>キュー情報の変換について</h3>
+    <p>以下のようにRide With GPSの「種類」情報をOruxmapsの指示情報に変換します。一対一に変換できないものがあります。ブルベでは「全速力」ポイントは使わないと思って「写真」に変換しています。</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Ride With GPS(WEB上の表記)</th>
+          <th>Ride With GPS(in gpx)</th>
+          <th>Oruxmaps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>左</td><td>Left</td><td>左</td></tr>
+        <tr><td>右</td><td>Right</td><td>右</td></tr>
+        <tr><td>少し左に</td><td>Slight Left</td><td>やや左</td></tr>
+        <tr><td>少し右に</td><td>Slight Right</td><td>やや右</td></tr>
+        <tr><td>鋭く左に</td><td>Sharp Left</td><td>左に急カーブ</td></tr>
+        <tr><td>鋭く右に</td><td>Sharp Right</td><td>右に急カーブ</td></tr>
+        <tr><td>まっすぐ</td><td>Straight</td><td>そのまま進行</td></tr>
+        <tr><td>Uターン</td><td>Uturn</td><td>リターン</td></tr>
+        <tr><td>頂上</td><td>Summit</td><td>頂上</td></tr>
+        <tr><td>水</td><td>Water</td><td>水飲み場</td></tr>
+        <tr><td>食べ物</td><td>Food</td><td>レストラン</td></tr>
+        <tr><td>危険</td><td>Danger</td><td>危険地帯</td></tr>
+        <tr><td>応急手当</td><td>First Aid</td><td>救急車</td></tr>
+        <tr><td>管理する</td><td>Control</td><td>情報案内</td></tr>
+        <tr><td>一般</td><td>Generic</td><td>ポイント</td></tr>
+        <tr><td>全速力</td><td>Sprint</td><td>写真</td></tr>
+      </tbody>
+    </table>
+    <h2>ファイル変換</h2>
+    <h3>Export</h3>
+    <p>Ride With GPSのGPX Export時に「経路マーカーとしてキューを含める」を有効にして保存してください。このファイルを上記のファイル選択機能、またはドロップエリアにドラッグアンドドロップすると変換ファイルのダウンロードリンクが生成されます。これをクリックして改めてダウンロードし、これをOruxmapsの経路ファイルとして読み込んでください。</p>
+    <img src="img/export_gpx_in_rwgps.png" width="354" height="349" alt="Ride With GPSのExport画面"/>
+    <h3>変換エラー</h3>
+    <p>指定されたファイルがgpxファイルと判断できなかった場合「ファイル is NOT a gpx file.」と表示します。変換箇所が見つからない場合は「ファイル is NOT modified.」と表示します。</p>
+    <h3>言語について</h3>
+    <p>変換後のキューシート情報を日本語で保存するため、Oruxmapsの日本語以外の設定では正常に動作しないと思われます（未確認）。</p>
+    <h3>変換について</h3>
     <p>選ばれたGPXファイルの変換処理はブラウザ内で行い、別サーバーなどへ送信されません。</p>
   </body>
 </html>
