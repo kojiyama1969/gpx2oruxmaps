@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>RWGPS to OruxMaps</title>
     <style type="text/css">
       #drop_zone {
@@ -15,10 +16,18 @@
   </head>
   
   <body>
+    <h1>RideWithGPS to Oruxmap</h1>
+    <p>Ride WITH GPSが生成したキューシート付きGPXファイルをOruxmapで適切にナビゲートさせるための変換サイトです。</p>
     <input type="file" id="files" name="files[]" />
     <output id="list"></output>
     <div id="drop_zone">Please drop gpx file here</div>
     <ul id="download_item"></ul>
     <script src="convertgpx.js"></script>
+    <h2>使い方</h2>
+    <p>Ride WITH GPSのGPX Export時に「経路マーカーとしてPOIを含める」と「経路マーカーとしてキューを含める」を有効にして保存してください。このファイルを以下のファイル選択機能、またはドロップエリアにドラッグアンドドロップすると変換ファイルのダウンロードリンクが生成されます。これをクリックして改めてダウンロードし、これをOruxmapの経路ファイルとして読み込んでください。</p>
+    <h2>言語について</h2>
+    <p>返還後のキューシート情報を日本語で設定するため、Oruxmapsの日本語以外の設定では正常に動作しないと思われます（未確認）。</p>
+    <h2>変換について</h2>
+    <p>選ばれたGPXファイルの変換処理はブラウザ内で行い、別サーバーなどへ送信されません。</p>
   </body>
 </html>
