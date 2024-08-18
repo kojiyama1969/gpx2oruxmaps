@@ -35,7 +35,7 @@ table tr:nth-child(odd){
   
   <body>
     <h1>RideWithGPS to Oruxmap</h1>
-    <p><a href="https://ridewithgps.com">Ride With GPS</a>が生成したキューシート付きGPXファイルをAndroid用オフラインマップアプリ（有料）である<a href="https://play.google.com/store/apps/details/OruxMaps_GP?id=com.orux.oruxmapsDonate&hl=ja">Oruxmaps GP</a>で適切にナビゲートさせるための変換サイトです。</p>
+    <p><a href="https://ridewithgps.com">Ride With GPS</a>で生成したキューシート付きGPXファイルをAndroid用オフラインマップアプリ（有料）である<a href="https://play.google.com/store/apps/details/OruxMaps_GP?id=com.orux.oruxmapsDonate&hl=ja">Oruxmaps GP</a>で適切にナビゲートさせるための変換サイトです。</p>
     <input type="file" id="files" name="files[]" />
     <output id="list"></output>
     <div id="drop_zone" style="display: flex; justify-content: center; align-items: center;">Please drop gpx file here</div>
@@ -76,7 +76,7 @@ table tr:nth-child(odd){
     </table>
     <h2>ファイル変換</h2>
     <h3>Export</h3>
-    <p>Ride With GPSのGPX Export時に「経路マーカーとしてキューを含める」を有効にして保存してください。このファイルを上記のファイル選択機能、またはドロップエリアにドラッグアンドドロップすると変換ファイルのダウンロードリンクが生成されます。これをクリックして改めてダウンロードし、これをOruxmapsの経路ファイルとして読み込んでください。</p>
+    <p>Ride With GPSのGPX Export時に「経路マーカーとしてキューを含める」を有効にして保存してください。このファイルを上記のファイル選択機能、またはドロップエリアにドラッグアンドドロップすると変換後ファイルのダウンロードリンクが生成されます。これをクリックして改めてダウンロードし、これをOruxmapsの経路ファイルとして読み込んでください。</p>
     <img src="img/export_gpx_in_rwgps.png" width="354" height="349" alt="Ride With GPSのExport画面"/>
     <h3>変換エラー</h3>
     <p>指定されたファイルがgpxファイルと判断できなかった場合「ファイル is NOT a gpx file.」と表示します。変換箇所が見つからない場合は「ファイル is NOT modified.」と表示します。</p>
